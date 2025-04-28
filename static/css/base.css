@@ -1,0 +1,14 @@
+:root {
+    /* colors */
+    --color-primary: red; /* temporário */
+
+    /* spaces */
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    padding: 0 2rem; /* temporário */
+}

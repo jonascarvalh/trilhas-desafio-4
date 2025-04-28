@@ -1,0 +1,34 @@
+/* imports */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+/* fonts */
+.font {
+    font-family: "Outfit", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+/* font definitions */
+.font__extrabold {
+    font-weight: 800;
+}
+
+.font__bold {
+    font-weight: 700;
+}
+
+.font__semibold {
+    font-weight: 600;
+}
+
+.font__medium {
+    font-weight: 500;
+}
+
+.font__regular {
+    font-weight: 400;
+}
+
+.font__light {
+    font-weight: 300;
+}

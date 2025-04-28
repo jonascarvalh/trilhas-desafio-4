@@ -18,20 +18,20 @@ A estrutura do repositório está organizada da seguinte forma:
 
 ```
 ├── index.html
-├── pages
+├── paginas
 │   └── dashboard.html
-├── static
+├── estaticos
 │   ├── css
-│       ├── home/
+│       ├── inicio/
 │       └── dashboard/
-│   ├── icons/
-│       ├── home/
+│   ├── icones/
+│       ├── inicio/
 │       └── dashboard/
-│   ├── images/
-│       ├── home/
+│   ├── imagens/
+│       ├── inicio/
 │       └── dashboard/
 │   ├── scripts/
-│       ├── home/
+│       ├── inicio/
 │       └── dashboard/
 ├── .gitignore 
 ├── README.md

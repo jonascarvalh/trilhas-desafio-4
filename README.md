@@ -17,24 +17,24 @@ O objetivo deste projeto é informar e conscientizar a população sobre a situa
 A estrutura do repositório está organizada da seguinte forma:
 
 ```
-├── .gitignore 
-├── README.md
 ├── index.html
 ├── pages
 │   └── dashboard.html
 ├── static
 │   ├── css
-│   ├── home/
-│   └── dashboard/
-├── icons/
-│   ├── home/
-│   └── dashboard/
-├── images/
-│   ├── home/
-│   └── dashboard/
-├── scripts/
-│   ├── home/
-│   └── dashboard/
+│       ├── home/
+│       └── dashboard/
+│   ├── icons/
+│       ├── home/
+│       └── dashboard/
+│   ├── images/
+│       ├── home/
+│       └── dashboard/
+│   ├── scripts/
+│       ├── home/
+│       └── dashboard/
+├── .gitignore 
+├── README.md
 ```
 
 - **index.html**: Página inicial (Landing Page).
@@ -55,7 +55,7 @@ Uma mensagem de commit deve ter o seguinte formato:
 
 - 📦 **Tipo**: Indica a natureza do commit (obrigatório).
 - 📝 **Escopo**: Sempre "trilhas" (ou outro nome definido para o projeto).
-- 🔢  **Numeração**: Número da task no Azure DevOps seguido de um breve resumo (obrigatório).
+- 🔢  **Numeração**: Número da task no Trello seguido de um breve resumo (obrigatório).
 
 ### Tipos de Commits
 

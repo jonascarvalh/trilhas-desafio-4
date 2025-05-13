@@ -1,34 +1,36 @@
-/* imports */
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+/* importações */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* fonts */
-.font {
-    font-family: "Outfit", serif;
+/* Font Inter */
+.inter__base {
+    font-family: "Inter", serif;
     font-optical-sizing: auto;
     font-style: normal;
 }
 
-/* font definitions */
-.font__extrabold {
-    font-weight: 800;
-}
-
-.font__bold {
-    font-weight: 700;
-}
-
-.font__semibold {
-    font-weight: 600;
-}
-
-.font__medium {
+.inter__medium {
     font-weight: 500;
 }
 
-.font__regular {
+.inter__regular {
     font-weight: 400;
 }
 
-.font__light {
-    font-weight: 300;
+/* Font Fraunces */
+.fraunces__base {
+    font-family: "Fraunces", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+.fraunces__regular {
+    font-weight: 400;
+}
+
+.fraunces__semibold {
+    font-weight: 600;
+}
+
+.fraunces__bold {
+    font-weight: 700;
 }

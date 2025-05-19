@@ -1,0 +1,11 @@
+.conteudo__sobre{
+    background-color: var(--cor-terciaria);
+}
+
+.conteudo__sobre__container{
+    background-color: var(--cor-quartenaria);
+    width: 480px;
+    height: 360px;
+    border-radius: 30px;
+}
+

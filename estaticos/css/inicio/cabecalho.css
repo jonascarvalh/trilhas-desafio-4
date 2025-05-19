@@ -1,0 +1,18 @@
+.cabecalho__opcoes__link{
+  color: var(--cor-secundaria);
+  text-decoration: underline;
+  font-size: var(--tamanho-texto);
+}
+
+.cabecalho{
+    background-color: var(--cor-terciaria);
+}
+
+.cabecalho__botao{
+    background-color: var(--cor-quartenaria);
+    padding: 17.5px 22px;
+    border: none;
+    border-radius: 30px;
+    color: var(--cor-terciaria);
+    font-size: 20px;
+}

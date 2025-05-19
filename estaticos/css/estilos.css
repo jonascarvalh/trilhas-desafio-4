@@ -1,3 +1,10 @@
 @import url('resetar.css');
 @import url('base.css');
 @import url('fontes.css');
+@import url('./inicio/cabecalho.css');
+@import url('./inicio/cta.css');
+@import url('./inicio/equipe.css');
+@import url('./inicio/principal.css');
+@import url('./inicio/recursos.css');
+@import url('./inicio/rodape.css');
+@import url('./inicio/sobre.css');

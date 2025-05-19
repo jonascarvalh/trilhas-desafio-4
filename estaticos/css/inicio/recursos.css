@@ -1,0 +1,12 @@
+.conteudo__recursos{
+    background-color: var(--cor-primaria);
+}
+
+.conteudo__recursos__container{
+    background-color: var(--cor-quartenaria);
+    width: 560px;
+    height: 283px;
+    border-radius: 30px;
+}
+
+

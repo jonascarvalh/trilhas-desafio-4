@@ -67,7 +67,7 @@
 }
 
 .conteudo__botao {
-    display: flex;  
+    display: flex;
     align-items: center;
     justify-content: center;
     width: 331px;
@@ -114,6 +114,10 @@
     border-radius: 340px;
     padding: 80px;
     position: relative;
-    
+
+}
+
+.conteudo__principal{
+    background-color: var(--cor-primaria);
 }
 

@@ -1,0 +1,19 @@
+.rodape{
+    background-color: var(--cor-secundaria);
+}
+
+.rodape__texto{
+    font-size: var(--tamanho-texto-rodape);
+    color: var(--cor-terciaria);
+}
+
+.rodape__fonte__link{
+    font-size: var(--tamanho-texto-link);
+    color: var(--cor-terciaria);
+}
+
+.rodape__fonte__inep{
+    font-size: var(--tamanho-texto-link);
+    color: var(--cor-terciaria);
+    text-decoration: underline;
+}

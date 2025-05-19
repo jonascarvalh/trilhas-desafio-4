@@ -1,0 +1,8 @@
+.conteudo__cta{
+    background-color: var(--cor-primaria);
+}
+
+.conteudo__cta__texto{
+    font-size: var(--tamanho-intertitulo);
+    color: var(--cor-secundaria);
+}

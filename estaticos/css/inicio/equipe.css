@@ -1,0 +1,13 @@
+.conteudo__equipe{
+    background-color: var(--cor-quartenaria);
+}
+
+.conteudo__equipe__subtitulo{
+    font-size: var(--tamanho-subtitulo);;
+    color: var(--cor-terciaria);
+}
+
+.conteudo__equipe__informacao{
+    font-size: var(--tamanho-texto);
+    color: var(--cor-quinaria);
+}

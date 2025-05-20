@@ -1,8 +1,26 @@
-.conteudo__cta{
+.sessao__cta {
     background-color: var(--cor-primaria);
+    padding: 5rem 0;
 }
 
-.conteudo__cta__texto{
+.conteudo__cta__texto {
     font-size: var(--tamanho-intertitulo);
     color: var(--cor-secundaria);
+}
+
+.conteudo__cta__container {
+    text-align: center;
+}
+
+.cta__titulo {
+    color: var(--cor-secundaria);
+    font-size: 4rem;
+}
+
+.conteudo__textual__cta {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 8rem;
 }

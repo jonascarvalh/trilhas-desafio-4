@@ -6,13 +6,27 @@
 
 .cabecalho{
     background-color: var(--cor-terciaria);
+    margin: 0 auto;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 30rem;
+}
+
+.cabecalho__opcoes {
+    display: flex;
+    gap: 0 3.75rem;
+    justify-content: center;
+    align-items: center;
 }
 
 .cabecalho__botao{
+    align-self: flex-end;
     background-color: var(--cor-quartenaria);
     padding: 17.5px 22px;
     border: none;
     border-radius: 30px;
     color: var(--cor-terciaria);
     font-size: 20px;
+    margin-right: 20px;
 }

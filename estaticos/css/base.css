@@ -22,40 +22,10 @@ a {
     text-decoration: none;
 }
 
-body {
-    
+.espacamento__padrao {
+    padding: 0 3.75rem;
 }
 
-.conteudo__titulo{
-    font-size: var(--tamanho-titulo);
-    color: var(--cor-secundaria);
-}
-
-.conteudo__texto{
-     font-size: var(--tamanho-texto);
-     color: var(--cor-secundaria);
-}
-
-.conteudo__botao{
-    background-color: var(--cor-quartenaria);
-    padding: 27px 40px;
-    border: none;
-    border-radius: 30px;
-    color: var(--cor-terciaria);
-    font-size: 30px;
-}
-
-.conteudo__subtitulo{
-    font-size: var(--tamanho-subtitulo);
-    color: var(--cor-secundaria);
-}
-
-.conteudo__intertitulo{
-    font-size: var(--tamanho-intertitulo);
-    color: var(--cor-terciaria);
-}
-
-.conteudo__texto__container{
-    font-size: var(--tamanho-texto-container);
-    color: var(--cor-terciaria);
+html {
+    scroll-behavior: smooth;
 }

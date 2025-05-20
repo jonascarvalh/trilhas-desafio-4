@@ -1,5 +1,6 @@
-.conteudo__recursos{
+.sessao__recursos{
     background-color: var(--cor-primaria);
+    padding: 5rem 0;
 }
 
 .conteudo__recursos__container{
@@ -7,6 +8,28 @@
     width: 560px;
     height: 283px;
     border-radius: 30px;
+    padding: 1rem 2rem;
 }
 
+.cards__recursos {
+    display: flex;
+    gap: 5rem;
+    justify-content: center;
+}
 
+.sessao__recursos h2 {
+    text-align: center;
+}
+
+.recursos__titulo {
+    font-size: 3.125rem;
+    color: var(--cor-secundaria);
+    margin-bottom: 2rem;
+}
+
+.conteudo__recursos__container__cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}

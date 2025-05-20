@@ -1,13 +1,38 @@
-.conteudo__equipe{
+.sessao__equipe{
     background-color: var(--cor-quartenaria);
+    padding: 5rem 0;
 }
 
 .conteudo__equipe__subtitulo{
     font-size: var(--tamanho-subtitulo);;
     color: var(--cor-terciaria);
+    text-align: center;
+    margin-bottom: 2rem;
 }
 
 .conteudo__equipe__informacao{
     font-size: var(--tamanho-texto);
     color: var(--cor-quinaria);
+}
+
+.equipe__cards {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.cards__equipe--frontend {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5rem;
+}
+
+.cards__equipe--design {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 5rem;
 }

@@ -1,0 +1,41 @@
+.sessao__sobre{
+    padding: 5rem 0;
+    background-color: var(--cor-terciaria);
+}
+
+.cards__sobre {
+    display: flex;
+    gap: 5rem;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+}
+
+.card__sobre {
+    background-color: var(--cor-quartenaria);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    width: 480px;
+    height: 360px;
+    position: relative;
+    text-align: center;
+    border-radius: 25px;
+    gap: 1rem;
+    padding: 0 1rem;
+}
+
+.sobre__titulo{
+    text-align: center;
+    color: var(--cor-secundaria);
+    font-size: 3.125rem;
+}
+
+.sobre__texto {
+    font-size: 1.5rem;
+    line-height: 1.6;
+    text-align: center;
+    padding: 0 20rem;
+    color: var(--cor-secundaria);
+}

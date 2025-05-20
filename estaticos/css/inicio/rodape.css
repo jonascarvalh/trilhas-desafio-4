@@ -1,0 +1,41 @@
+.sessao__rodape{
+    background-color: var(--cor-secundaria);
+    height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rodape__texto{
+    font-size: var(--tamanho-texto-rodape);
+    color: var(--cor-terciaria);
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.rodape__fonte__link{
+    font-size: var(--tamanho-texto-link);
+    color: var(--cor-terciaria);
+}
+
+.rodape__fonte__inep{
+    font-size: var(--tamanho-texto-link);
+    color: var(--cor-terciaria);
+    text-decoration: underline;
+}
+
+.rodape__fonte {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rodape__container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}

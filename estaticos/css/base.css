@@ -1,6 +1,19 @@
 :root {
     /* colors */
-    --color-primary: red; /* temporário */
+    --cor-primaria: #B5D291;
+    --cor-secundaria: #204000;
+    --cor-terciaria: #FDF8D7;
+    --cor-quartenaria: #397200;
+    --cor-quinaria: #FFFFFF;
+
+    /* font-size */
+    --tamanho-titulo: 4rem;
+    --tamanho-subtitulo: 3.12rem;
+    --tamanho-intertitulo: 2.18rem;
+    --tamanho-texto: 1.87rem;
+    --tamanho-texto-container: 1.75rem;
+    --tamanho-texto-rodape: 1.5rem;
+    --tamanho-texto-link: 1.25;
 
     /* spaces */
 }
@@ -9,6 +22,10 @@ a {
     text-decoration: none;
 }
 
-body {
-    padding: 0 2rem; /* temporário */
+.espacamento__padrao {
+    padding: 0 3.75rem;
+}
+
+html {
+    scroll-behavior: smooth;
 }

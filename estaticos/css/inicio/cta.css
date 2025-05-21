@@ -31,7 +31,6 @@
     margin-bottom: 8rem;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
     .sessao__cta {
         padding: 3rem 0;

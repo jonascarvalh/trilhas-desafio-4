@@ -9,6 +9,8 @@
     height: 283px;
     border-radius: 30px;
     padding: 1rem 2rem;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .cards__recursos {
@@ -25,6 +27,9 @@
     font-size: 3.125rem;
     color: var(--cor-secundaria);
     margin-bottom: 2rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
 
 .conteudo__recursos__container__cabecalho {
@@ -32,4 +37,50 @@
     align-items: center;
     gap: 1rem;
     margin-bottom: 1rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
 }
+
+.conteudo__recursos__container * {
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    hyphens: auto;
+}
+
+@media (max-width: 600px) {
+    .conteudo__recursos__container {
+        width: 100%;
+        max-width: 100%;
+        height: auto;
+        padding: 1rem 1rem;
+        border-radius: 20px;
+        margin: 0 0 2rem 0;
+        box-sizing: border-box;
+        overflow: hidden;
+    }
+
+    .cards__recursos {
+        flex-direction: column;
+        gap: 2rem;
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+
+    .recursos__titulo {
+        font-size: 2rem;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        hyphens: auto;
+    }
+
+    .sessao__recursos {
+        padding: 3rem 1rem;
+    }
+}
+

@@ -16,6 +16,10 @@
     font-weight: 400;
 }
 
+.inter__extrabold {
+    font-weight: 800;
+}
+
 /* Font Fraunces */
 .fraunces__base {
     font-family: "Fraunces", serif;
@@ -33,4 +37,8 @@
 
 .fraunces__bold {
     font-weight: 700;
+}
+
+.fraunces__black {
+    font-weight: 900;
 }

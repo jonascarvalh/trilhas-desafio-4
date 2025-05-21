@@ -6,84 +6,142 @@
     <title>Dashboard | Educação Básica</title>
 
     <link rel="stylesheet" href="../estaticos/css/estilos.css">
+    <link rel="stylesheet" href="../estaticos/css/inicio/principal.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <section class="sessao__dashboard">
-        <div class="sessao__dashboard__titulo">ÍNDICES DA EDUCAÇÃO BRASILEIRA (2019)</div>
-        <div>
-            <p>Principais estatísticas da educação básica: Estaduais</p>
-            <div>
-                <div>Talvez um mapa aqui</div>
-                <div>
-                    <div>
-                        <p>IDEB</p>
-                        <div></div>
-                    </div>
+        <p class="dashboard__titulo fraunces__base fraunces__black">ÍNDICES DA EDUCAÇÃO BRASILEIRA (2019)</p>
 
-                    <div>
-                        <p>Taxa de evasão</p>
-                        <div></div>
-                    </div>
+        <div class="cards__dashboard">
+            <div class="divisao__texto">
+                <div class="container__mapa">
+                    <p class="inter__base inter__extrabold dashboard__subtitulo">Principais estatísticas da educação básica: Estaduais</p>
+                    <div class="dashboard__dados-mapa">
+                        <div class="anexo__mapa">
+                            <img src="../estaticos/imagens/dashboard/mapa-exemplo.png" alt="">
+                        </div>
+                        <div>
+                            <div class="flex column align-center">
+                                <p class="rotulo__dado inter__base inter__extrabold">IDEB</p>
+                                <div class="container__valor container__valor--branco">
+                                    <span class="valor inter__base inter__extrabold">89,9%</span>
+                                </div>
+                            </div>
 
-                    <div>
-                        <p>Nº de matrículas</p>
-                        <div></div>
+                            <div class="flex column align-center">
+                                <p class="rotulo__dado inter__base inter__extrabold">Taxa de evasão</p>
+                                <div class="container__valor container__valor--branco">
+                                    <span class="valor inter__base inter__extrabold">89,9%</span>
+                                </div>
+                            </div>
+
+                            <div class="flex column align-center">
+                                <p class="rotulo__dado inter__base inter__extrabold">Nº de matrículas</p>
+                                <div class="container__valor container__valor--branco">
+                                    <span class="valor inter__base inter__extrabold">89,9%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container__internet container__borda--preta">
+                    <p class="titulo__internet fraunces__base fraunces__semibold">Acesso à internet</p>
+                    <div class="flex gap-4">
+                        <div>
+                            <p class="rotulo__internet inter__base inter__extrabold">Anos iniciais</p>
+                            <div class="rotulo__dado-2">
+                                <p class="valor inter__base inter__extrabold">88,9%</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="rotulo__internet inter__base inter__extrabold">Ensino médio</p>
+                            <div class="rotulo__dado-2">
+                                <p class="valor inter__base inter__extrabold">97,1%</p>
+                            </div>
+                        </div>
+
+                        <div>
+                            <p class="rotulo__internet inter__base inter__extrabold">Anos finais</p>
+                            <div class="rotulo__dado-2">
+                                <p class="valor inter__base inter__extrabold">93,4%</p>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-        </div>
+            <div class="divisao__texto">
+                <div class="container__nacionais container__borda--preta">
+                    <p class="titulo__nacionais fraunces__base fraunces__semibold">Nacionais</p>
+                    <div class="dados__nacionais flex align-center">
+                        <div class="flex column align-center">
+                            <p class="rotulo__nacionais inter__base inter__extrabold">IDEB</p>
+                            <div class="container__valor container__valor--verde">
+                                <span class="valor inter__base inter__extrabold">89,9%</span>
+                            </div>
+                        </div>
 
-        <div>
-            <p>Acesso à internet</p>
-            <div>
-                <div>
-                    <p>Anos iniciais</p>
-                    <div>
-                        <p>88,9%</p>
+                        <div class="flex column align-center">
+                            <p class="rotulo__nacionais inter__base inter__extrabold">Taxa de Evasão</p>
+                            <div class="container__valor container__valor--verde">
+                                <span class="valor inter__base inter__extrabold">89,9%</span>
+                            </div>
+                        </div>
+
+                        <div class="flex column align-center">
+                            <p class="rotulo__nacionais inter__base inter__extrabold">Nº de matrículas</p>
+                            <div class="container__valor container__valor--verde">
+                                <span class="valor inter__base inter__extrabold">89,9%</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div>
-                    <p>Ensino médio</p>
-                    <div>
-                        <p>97,1%</p>
-                    </div>
-                </div>
-
-                <div>
-                    <p>Anos finais</p>
-                    <div>
-                        <p>93,4%</p>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-
-        <div>
-            <p>Nacionais</p>
-            <div>
-                <div>
-                    <p>IDEB</p>
-                    <div>89,9%</div>
-                </div>
-
-                <div>
-                    <p>Taxa de Evasão</p>
-                    <div>89,9%</div>
-                </div>
-
-                <div>
-                    <p>Nº de matrículas</p>
-                    <div>89,9%</div>
+                <div class="container__infra container__borda--preta">
+                    <p class="titulo__infra fraunces__base fraunces__semibold">Infraestrutura</p>
+                    <canvas id="radarChart" class="radar__tamanho"></canvas>
                 </div>
             </div>
-        </div>
-
-        <div>
-            <p>Infraestrutura</p>
-            <div>Representação Radar Map</div>
         </div>
     </section>
+
+    <script>
+        // Exemplo de dados para o gráfico de radar (você vai substituir esses com dados da sua API)
+        const data = {
+            labels: ["Quadra de esportes", "Laboratório de Informática", "Laboratório de ciências", "Banheiro", "Biblioteca/Sala de leitura", "Banheiro PCD", "Auditório"],
+            datasets: [{
+                label: 'Infraestrutura da Escola',
+                data: [8, 6, 7, 9, 8, 5, 7], // Substitua com os dados da sua API
+                backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                borderColor: 'rgba(255, 99, 132, 1)',
+                borderWidth: 1
+            }]
+        };
+
+        // Configuração do Radar Chart
+        const config = {
+            type: 'radar',
+            data: data,
+            options: {
+                scales: {
+                    r: {
+                        min: 0,
+                        max: 10,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                }
+            }
+        };
+
+        // Criação do gráfico de radar
+        const radarChart = new Chart(
+            document.getElementById('radarChart'),
+            config
+        );
+    </script>
 </body>
 </html>

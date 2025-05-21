@@ -1,5 +1,182 @@
 @import url('../base.css');
 
 .sessao__dashboard {
-    background-color: var();
+    background-color: var(--cor-terciaria);
+    height: 100vh;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.dashboard__titulo {
+    color: var(--cor-secundaria);
+    font-size: 3.75rem;
+}
+
+.container__mapa {
+    background-color: var(--cor-primaria);
+    width: 800px;
+    height: 500px;
+    border-radius: 30px;
+    padding: 1.5rem;
+}
+
+.anexo__mapa {
+    width: 500px;
+    overflow: hidden;
+}
+
+.anexo__mapa img {
+    width: 80%;
+    height: 80%;
+    object-fit: cover;
+}
+
+
+.dashboard__subtitulo {
+    color: var(--cor-secundaria);
+    font-size: 2.2rem;
+}
+
+.dashboard__dados-mapa {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rotulo__dado {
+    color: var(--cor-secundaria);
+}
+
+.container__valor {
+    margin-bottom: 1.5rem;
+    width: 160px;
+    height: 110px;
+    border-radius: 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container__valor--branco {
+    background-color: var(--cor-quinaria);
+}
+
+.container__valor--verde {
+    background-color: var(--cor-primaria);
+}
+
+.flex {
+    display: flex;
+}
+
+.gap-1 {
+    gap: 1.5rem;
+}
+
+.gap-4 {
+    gap: 4.37rem;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.valor {
+    color: var(--cor-secundaria);
+    font-size: 2.5rem;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.container__internet {
+    background-color: var(--cor-quinaria);
+    width: 800px;
+    padding: 1.5rem;
+}
+
+.container__borda--preta {
+    border: 1px solid black;
+    border-radius: 30px;
+}
+
+.titulo__internet {
+    color: var(--cor-secundaria);
+    font-size: 2.2rem;
+    margin-bottom: 1.875rem;
+}
+
+.rotulo__dado-2 {
+    background-color: var(--cor-primaria);
+    border-radius: 30px;
+    padding: 1.25rem;
+}
+
+.rotulo__internet {
+    text-align: center;
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.titulo__nacionais {
+    color: var(--cor-secundaria);
+    font-size: 2.2rem;
+    margin-bottom: 1.875rem;
+}
+
+.rotulo__nacionais {
+    text-align: center;
+    color: var(--cor-secundaria);
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.rotulo__nacionais-espec {
+    text-align: start;
+    width: 100px;
+}
+
+.container__nacionais {
+    width: 800px;
+    height: 280px;
+    padding: 1.5rem;
+    background-color: var(--cor-quinaria);
+}
+
+.dados__nacionais {
+    justify-content: space-between;
+}
+
+.container__infra {
+    height: 425px;
+    width: 800px;
+    background-color: var(--cor-quinaria);
+    padding: 1.5rem;
+}
+
+.titulo__infra {
+    color: var(--cor-secundaria);
+    font-size: 2.2rem;
+}
+
+.cards__dashboard {
+    display: flex;
+    justify-content: space-between;
+}
+
+.radar__tamanho {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.divisao__texto {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
 }

@@ -38,7 +38,7 @@
 }
 
 /* Responsive styles */
-@media (max-width: 768px) {
+@media (max-width: 1300px) {
     .sessao__equipe {
         padding: 3rem 1rem;
     }

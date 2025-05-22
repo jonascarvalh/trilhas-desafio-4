@@ -11,6 +11,11 @@
     padding: 4rem 0;
 }
 
+.sobre__texto-card {
+    font-size: var(--tamanho-texto-container);
+    color: var(--cor-terciaria);
+}
+
 .card__sobre {
     background-color: var(--cor-quartenaria);
     display: flex;
@@ -38,4 +43,27 @@
     text-align: center;
     padding: 0 20rem;
     color: var(--cor-secundaria);
+}
+
+@media (max-width: 1300px) {
+    .sobre__titulo {
+        font-size: 2rem;
+    }
+
+    .sobre__texto {
+        padding: 0;
+        font-size: 1.25rem;
+    }
+
+    .sobre__texto-card {
+        font-size: 1.25rem;
+    }
+
+    .cards__sobre {
+        flex-direction: column;
+    }
+
+    .card__sobre {
+        width: 80%;
+    }
 }

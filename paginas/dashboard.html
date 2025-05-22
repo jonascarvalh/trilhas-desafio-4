@@ -12,8 +12,15 @@
     
     <script defer type="module" src="../scripts/dashboard/api/axios.js"></script>
     <script defer type="module" src="../scripts/dashboard/api/endpoints/ideb.js"></script>
+
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/maps/modules/map.js"></script>
+    <script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 </head>
 <body>
+
     <section class="sessao__dashboard">
         <p class="dashboard__titulo fraunces__base fraunces__black">ÍNDICES DA EDUCAÇÃO BRASILEIRA (2019)</p>
 
@@ -29,7 +36,7 @@
                             <div class="flex column align-center gap-1">
                                 <p class="rotulo__dado inter__base inter__extrabold">IDEB</p>
                                 <div class="container__valor container__valor--branco">
-                                    <span class="valor inter__base inter__extrabold">89,9%</span>
+                                    <span class="valor inter__base inter__extrabold" id="ideb_em">89,9%</span>
                                 </div>
                             </div>
 
@@ -146,6 +153,90 @@
             document.getElementById('radarChart'),
             config
         );
+    </script>
+
+    <script>
+        Highcharts.mapChart('container', {
+            chart: {
+                map: 'countries/br/br-all' // Mapa do Brasil completo
+            },
+
+            title: {
+                text: 'Clique em um estado'
+            },
+
+            tooltip: {
+                headerFormat: '',
+                pointFormat: '<b>{point.name}</b><br>Ideb: {point.value}' // Exibe o nome do estado e o valor do Ideb
+            },
+
+            mapNavigation: {
+                enabled: true,
+                buttonOptions: {
+                    verticalAlign: 'bottom'
+                }
+            },
+
+            series: [{
+                data: [
+                    { "hc-key": "br-ac", value: 5.8 },
+                    { "hc-key": "br-al", value: 4.9 },
+                    { "hc-key": "br-am", value: 5.4 },
+                    { "hc-key": "br-ap", value: 6.2 },
+                    { "hc-key": "br-ba", value: 5.7 },
+                    { "hc-key": "br-ce", value: 5.1 },
+                    { "hc-key": "br-df", value: 6.5 },
+                    { "hc-key": "br-es", value: 5.6 },
+                    { "hc-key": "br-go", value: 5.3 },
+                    { "hc-key": "br-ma", value: 4.8 },
+                    { "hc-key": "br-mt", value: 5.2 },
+                    { "hc-key": "br-ms", value: 5.0 },
+                    { "hc-key": "br-mg", value: 6.1 },
+                    { "hc-key": "br-pa", value: 5.0 },
+                    { "hc-key": "br-pb", value: 5.4 },
+                    { "hc-key": "br-pr", value: 6.0 },
+                    { "hc-key": "br-pe", value: 5.2 },
+                    { "hc-key": "br-pi", value: 5.0 },
+                    { "hc-key": "br-rj", value: 6.3 },
+                    { "hc-key": "br-rn", value: 5.5 },
+                    { "hc-key": "br-ro", value: 5.3 },
+                    { "hc-key": "br-rr", value: 5.4 },
+                    { "hc-key": "br-rs", value: 6.2 },
+                    { "hc-key": "br-sc", value: 6.4 },
+                    { "hc-key": "br-se", value: 5.6 },
+                    { "hc-key": "br-sp", value: 6.8 },
+                    { "hc-key": "br-to", value: 5.1 }
+                ], // Dados fictícios
+                mapData: Highcharts.maps['countries/br/br-all'], // Usando o mapa carregado
+                joinBy: 'hc-key', // Associando os dados pela chave
+                name: 'Estados do Brasil',
+                states: {
+                    hover: {
+                        color: '#a4edba'
+                    }
+                },
+
+                // Captura o evento de clique em um estado
+                point: {
+                    events: {
+                        mouseOver: function() {
+                            // Aplica uma cor ao passar o mouse sobre o estado
+                            this.graphic.attr({
+                                fill: '#a4edba' // Alteração de cor no hover
+                            });
+                        },
+                        click: function () {
+                            // Captura o ID do estado (hc-key) após o clique
+                            let estadoId = this.properties['hc-key'];
+                            console.log('ID do estado selecionado:', estadoId);
+
+                            // Exibe um alerta com o nome do estado e o valor do Ideb
+                            alert('Você clicou no estado: ' + this.name + ' com o Ideb de: ' + this.value);
+                        }
+                    }
+                }
+            }]
+        });
     </script>
 </body>
 </html>

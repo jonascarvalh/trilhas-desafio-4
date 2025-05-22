@@ -31,7 +31,7 @@
     margin-bottom: 8rem;
 }
 
-.conteudo__botao {
+.conteudo__botao-cta {
     background-color: var(--cor-quartenaria);
     width: 330px;
     height: 100px;
@@ -60,7 +60,7 @@
         margin-bottom: 1rem;
     }
 
-    .conteudo__botao {
+    .conteudo__botao-cta {
         width: 80%;
         font-size: 1.5rem;
         height: 80px;

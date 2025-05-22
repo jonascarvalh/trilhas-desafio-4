@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Filtro Mapa do Brasil</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/highcharts.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highcharts/11.2.0/modules/map.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+        .info-panel {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            border-left: 4px solid #007bff;
+        }
+        .selected-state {
+            font-weight: bold;
+            color: #007bff;
+        }
+        .clear-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+        .clear-btn:hover {
+            background: #c82333;
+        }
+        #mapContainer {
+            height: 500px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Filtro por Estado - Mapa do Brasil</h1>
+        
+        <div class="info-panel">
+            <div>
+                <strong>Estado selecionado:</strong> 
+                <span id="selectedState" class="selected-state">Nenhum</span>
+                <button id="clearBtn" class="clear-btn" style="display: none;" onclick="clearSelection()">Limpar</button>
+            </div>
+            <div style="margin-top: 10px;">
+                <strong>Código IBGE:</strong> 
+                <span id="ibgeCode">-</span>
+            </div>
+        </div>
+
+        <div id="mapContainer"></div>
+    </div>
+
+    <script>
+        // Mapeamento dos estados com códigos IBGE
+        const estadosIBGE = {
+            'AC': { nome: 'Acre', codigo: '12' },
+            'AL': { nome: 'Alagoas', codigo: '27' },
+            'AP': { nome: 'Amapá', codigo: '16' },
+            'AM': { nome: 'Amazonas', codigo: '13' },
+            'BA': { nome: 'Bahia', codigo: '29' },
+            'CE': { nome: 'Ceará', codigo: '23' },
+            'DF': { nome: 'Distrito Federal', codigo: '53' },
+            'ES': { nome: 'Espírito Santo', codigo: '32' },
+            'GO': { nome: 'Goiás', codigo: '52' },
+            'MA': { nome: 'Maranhão', codigo: '21' },
+            'MT': { nome: 'Mato Grosso', codigo: '51' },
+            'MS': { nome: 'Mato Grosso do Sul', codigo: '50' },
+            'MG': { nome: 'Minas Gerais', codigo: '31' },
+            'PA': { nome: 'Pará', codigo: '15' },
+            'PB': { nome: 'Paraíba', codigo: '25' },
+            'PR': { nome: 'Paraná', codigo: '41' },
+            'PE': { nome: 'Pernambuco', codigo: '26' },
+            'PI': { nome: 'Piauí', codigo: '22' },
+            'RJ': { nome: 'Rio de Janeiro', codigo: '33' },
+            'RN': { nome: 'Rio Grande do Norte', codigo: '24' },
+            'RS': { nome: 'Rio Grande do Sul', codigo: '43' },
+            'RO': { nome: 'Rondônia', codigo: '11' },
+            'RR': { nome: 'Roraima', codigo: '14' },
+            'SC': { nome: 'Santa Catarina', codigo: '42' },
+            'SP': { nome: 'São Paulo', codigo: '35' },
+            'SE': { nome: 'Sergipe', codigo: '28' },
+            'TO': { nome: 'Tocantins', codigo: '17' }
+        };
+
+        let selectedStateId = null;
+        let chart = null;
+
+        // Dados do mapa do Brasil (simplificado para exemplo)
+        const mapData = [
+            { 'hc-key': 'br-ac', 'name': 'Acre', 'uf': 'AC' },
+            { 'hc-key': 'br-al', 'name': 'Alagoas', 'uf': 'AL' },
+            { 'hc-key': 'br-ap', 'name': 'Amapá', 'uf': 'AP' },
+            { 'hc-key': 'br-am', 'name': 'Amazonas', 'uf': 'AM' },
+            { 'hc-key': 'br-ba', 'name': 'Bahia', 'uf': 'BA' },
+            { 'hc-key': 'br-ce', 'name': 'Ceará', 'uf': 'CE' },
+            { 'hc-key': 'br-df', 'name': 'Distrito Federal', 'uf': 'DF' },
+            { 'hc-key': 'br-es', 'name': 'Espírito Santo', 'uf': 'ES' },
+            { 'hc-key': 'br-go', 'name': 'Goiás', 'uf': 'GO' },
+            { 'hc-key': 'br-ma', 'name': 'Maranhão', 'uf': 'MA' },
+            { 'hc-key': 'br-mt', 'name': 'Mato Grosso', 'uf': 'MT' },
+            { 'hc-key': 'br-ms', 'name': 'Mato Grosso do Sul', 'uf': 'MS' },
+            { 'hc-key': 'br-mg', 'name': 'Minas Gerais', 'uf': 'MG' },
+            { 'hc-key': 'br-pa', 'name': 'Pará', 'uf': 'PA' },
+            { 'hc-key': 'br-pb', 'name': 'Paraíba', 'uf': 'PB' },
+            { 'hc-key': 'br-pr', 'name': 'Paraná', 'uf': 'PR' },
+            { 'hc-key': 'br-pe', 'name': 'Pernambuco', 'uf': 'PE' },
+            { 'hc-key': 'br-pi', 'name': 'Piauí', 'uf': 'PI' },
+            { 'hc-key': 'br-rj', 'name': 'Rio de Janeiro', 'uf': 'RJ' },
+            { 'hc-key': 'br-rn', 'name': 'Rio Grande do Norte', 'uf': 'RN' },
+            { 'hc-key': 'br-rs', 'name': 'Rio Grande do Sul', 'uf': 'RS' },
+            { 'hc-key': 'br-ro', 'name': 'Rondônia', 'uf': 'RO' },
+            { 'hc-key': 'br-rr', 'name': 'Roraima', 'uf': 'RR' },
+            { 'hc-key': 'br-sc', 'name': 'Santa Catarina', 'uf': 'SC' },
+            { 'hc-key': 'br-sp', 'name': 'São Paulo', 'uf': 'SP' },
+            { 'hc-key': 'br-se', 'name': 'Sergipe', 'uf': 'SE' },
+            { 'hc-key': 'br-to', 'name': 'Tocantins', 'uf': 'TO' }
+        ];
+
+        // Função para atualizar a interface
+        function updateSelectedState(uf, nome) {
+            const estado = estadosIBGE[uf];
+            document.getElementById('selectedState').textContent = nome;
+            document.getElementById('ibgeCode').textContent = estado.codigo;
+            document.getElementById('clearBtn').style.display = 'inline-block';
+            selectedStateId = estado.codigo;
+            
+            // Aqui você pode implementar sua lógica de filtro
+            ('Estado selecionado:', nome, 'Código IBGE:', estado.codigo);
+            
+            // Exemplo de como usar o código IBGE para filtrar dados
+            // filterDataByState(estado.codigo);
+        }
+
+        // Função para limpar seleção
+        function clearSelection() {
+            document.getElementById('selectedState').textContent = 'Nenhum';
+            document.getElementById('ibgeCode').textContent = '-';
+            document.getElementById('clearBtn').style.display = 'none';
+            selectedStateId = null;
+            
+            // Limpar seleção no mapa
+            if (chart) {
+                chart.series[0].data.forEach(point => {
+                    point.select(false);
+                });
+            }
+            
+            ('Seleção limpa');
+        }
+
+        // Função para filtrar dados (exemplo)
+        function filterDataByState(ibgeCode) {
+            // Implementar sua lógica de filtro aqui
+            ('Filtrando dados para o estado com código IBGE:', ibgeCode);
+            
+            // Exemplo: fazer requisição para API
+            // fetch(`/api/dados?estado=${ibgeCode}`)
+            //     .then(response => response.json())
+            //     .then(data => {
+            //         // Processar dados filtrados
+            //     });
+        }
+
+        // Configuração do mapa
+        Highcharts.getJSON('https://code.highcharts.com/mapdata/countries/br/br-all.geo.json', function (geojson) {
+            chart = Highcharts.mapChart('mapContainer', {
+                chart: {
+                    backgroundColor: '#ffffff'
+                },
+                title: {
+                    text: 'Clique em um estado para selecioná-lo'
+                },
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom'
+                    }
+                },
+                colorAxis: {
+                    min: 0,
+                    max: 1,
+                    stops: [
+                        [0, '#E6F3FF'],
+                        [0.5, '#7FB3D3'],
+                        [1, '#3182CE']
+                    ]
+                },
+                series: [{
+                    data: mapData.map(item => ({
+                        ...item,
+                        value: 0.5 // Valor padrão para coloração
+                    })),
+                    mapData: geojson,
+                    joinBy: 'hc-key',
+                    name: 'Estados',
+                    states: {
+                        hover: {
+                            color: '#FF6B6B'
+                        },
+                        select: {
+                            color: '#FF6B6B'
+                        }
+                    },
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    point: {
+                        events: {
+                            click: function () {
+                                // Limpar seleções anteriores
+                                this.series.data.forEach(point => {
+                                    if (point !== this) {
+                                        point.select(false);
+                                    }
+                                });
+                                
+                                // Selecionar o ponto clicado
+                                this.select(true);
+                                
+                                // Atualizar estado selecionado
+                                updateSelectedState(this.uf, this.name);
+                            }
+                        }
+                    }
+                }]
+            });
+        });
+
+        // Função de exemplo para usar o código IBGE selecionado
+        function getSelectedStateCode() {
+            return selectedStateId;
+        }
+
+        // Exemplo de uso
+        document.addEventListener('DOMContentLoaded', function() {
+            ('Mapa do Brasil carregado. Clique em um estado para selecioná-lo.');
+        });
+    </script>
+</body>
+</html>

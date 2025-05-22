@@ -7,236 +7,88 @@
 
     <link rel="stylesheet" href="../estaticos/css/estilos.css">
     <link rel="stylesheet" href="../estaticos/css/inicio/principal.css">
+    
+    <!-- Bibliotecas externas -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    
-    <script defer type="module" src="../scripts/dashboard/api/axios.js"></script>
-    <script defer type="module" src="../scripts/dashboard/api/endpoints/ideb.js"></script>
-
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/maps/modules/map.js"></script>
     <script src="https://code.highcharts.com/mapdata/countries/br/br-all.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/proj4js/2.7.2/proj4.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    
+    <!-- Scripts da aplicação -->
+    <script defer type="module" src="../scripts/dashboard/api/axios.js"></script>
+    <script defer type="module" src="../scripts/dashboard/api/endpoints/ideb.js"></script>
+    <script defer type="module" src="../scripts/dashboard/api/endpoints/enem.js"></script>
+    <script defer type="module" src="../scripts/dashboard/dom.js"></script>
+    <script defer src="../scripts/dashboard/highcharts.js"></script>
 </head>
 <body>
     <section class="sessao__dashboard">
-        <p class="dashboard__titulo fraunces__base fraunces__black">ÍNDICES DA EDUCAÇÃO BRASILEIRA (2019)</p>
+        <h1 class="dashboard__titulo fraunces__base fraunces__black" id="titulo_principal">ÍNDICES DA EDUCAÇÃO BRASILEIRA (2019)</h1>
 
         <div class="cards__dashboard">
-            <div class="divisao__texto">
-                <div class="container__mapa">
-                    <p class="inter__base inter__extrabold dashboard__subtitulo">Principais estatísticas da educação básica: Estaduais</p>
-                    <div class="dashboard__dados-mapa">
-                        <div class="anexo__mapa">
-                            <div id="container" style="width: 100%; height: 100%;"></div>
-                        </div>
-                        <div class="dashboard__container">
-                            <div class="flex column align-center gap-1">
-                                <p class="rotulo__dado inter__base inter__extrabold">IDEB</p>
-                                <div class="container__valor container__valor--branco">
-                                    <span class="valor inter__base inter__extrabold" id="ideb_em">89,9%</span>
-                                </div>
-                            </div>
-
-                            <div class="flex column align-center gap-1">
-                                <p class="rotulo__dado inter__base inter__extrabold">Taxa de evasão</p>
-                                <div class="container__valor container__valor--branco">
-                                    <span class="valor inter__base inter__extrabold">89,9%</span>
-                                </div>
-                            </div>
-
-                            <div class="flex column align-center gap-1">
-                                <p class="rotulo__dado inter__base inter__extrabold">Nº de matrículas</p>
-                                <div class="container__valor container__valor--branco">
-                                    <span class="valor inter__base inter__extrabold">89,9%</span>
-                                </div>
-                            </div>
-                        </div>
+            <!-- Card do Mapa -->
+            <div class="container__mapa">
+                <h2 class="dashboard__subtitulo fraunces__base fraunces__semibold" id="subtitulo_dashboard">Principais estatísticas da educação básica: Estaduais - Brasil</h2>
+                <div class="dashboard__dados-mapa">
+                    <div class="anexo__mapa">
+                        <div id="container"></div>
                     </div>
-                </div>
-                <div class="container__internet container__borda--preta">
-                    <p class="titulo__internet fraunces__base fraunces__semibold">Acesso à internet</p>
-                    <div class="container__internet__dados  flex gap-4">
-                        <div>
-                            <p class="rotulo__internet inter__base inter__extrabold">Anos iniciais</p>
-                            <div class="rotulo__dado-2">
-                                <p class="valor inter__base inter__extrabold">88,9%</p>
-                            </div>
+                    <div class="indicadores">
+                        <div class="indicador">
+                            <p class="inter__base inter__extrabold indicador-label">IDEB (2019)</p>
+                            <p class="inter__base inter__extrabold indicador-valor" id="ideb_em">...</p>
                         </div>
-
-                        <div>
-                            <p class="rotulo__internet inter__base inter__extrabold">Ensino médio</p>
-                            <div class="rotulo__dado-2">
-                                <p class="valor inter__base inter__extrabold">97,1%</p>
-                            </div>
+                        <div class="indicador">
+                            <p class="inter__base inter__extrabold indicador-label">Projeção (2021)</p>
+                            <p class="inter__base inter__extrabold indicador-valor" id="projecoes">...</p>
                         </div>
-
-                        <div>
-                            <p class="rotulo__internet inter__base inter__extrabold">Anos finais</p>
-                            <div class="rotulo__dado-2">
-                                <p class="valor inter__base inter__extrabold">93,4%</p>
-                            </div>
+                        <div class="indicador">
+                            <p class="inter__base inter__extrabold indicador-label">Taxa de aprovações</p>
+                            <p class="inter__base inter__extrabold indicador-valor" id="aprovacoes">...</p>
                         </div>
-
                     </div>
                 </div>
             </div>
-            <div class="divisao__texto">
-                <div class="container__nacionais container__borda--preta">
-                    <p class="titulo__nacionais fraunces__base fraunces__semibold">Nacionais</p>
-                    <div class="dados__nacionais flex align-center">
-                        <div class="flex column align-center">
-                            <p class="rotulo__nacionais inter__base inter__extrabold">IDEB</p>
-                            <div class="container__valor container__valor--verde">
-                                <span class="valor inter__base inter__extrabold">5,1</span>
-                            </div>
-                        </div>
 
-                        <div class="flex column align-center">
-                            <p class="rotulo__nacionais inter__base inter__extrabold">Taxa de Evasão</p>
-                            <div class="container__valor container__valor--verde">
-                                <span class="valor inter__base inter__extrabold"></span>
-                            </div>
-                        </div>
-
-                        <div class="flex column align-center" id="matriculas">
-                            <p class="rotulo__nacionais inter__base inter__extrabold">Nº de matrículas</p>
-                            <div class="container__valor container__valor--verde">
-                                <span class="valor inter__base inter__extrabold">47M</span>
-                            </div>
+            <!-- Card do ENEM -->
+            <div class="container__enem">
+                <h2 class="titulo__enem dashboard__titulo fraunces__base fraunces__semibold">Notas Enem: 
+                    <span class="titulo__enem fraunces__base fraunces__semibold" id="nome_capital"></span> 
+                    (<span class="titulo__enem fraunces__base fraunces__semibold" id="nome_estado_enem"></span>)</h2>
+                <div class="container__enem__dados">
+                    <div class="enem-item">
+                        <p class="inter__base inter__extrabold rotulo__internet">Média Geral</p>
+                        <div class="rotulo__dado-2">
+                            <p class="inter__base inter__extrabold valor" id="media_enem">...</p>
                         </div>
                     </div>
-                </div>
 
-                <div class="container__infra container__borda--preta">
-                    <p class="titulo__infra fraunces__base fraunces__semibold">Infraestrutura</p>
-                    <canvas id="radarChart" class="radar__tamanho"></canvas>
+                    <div class="enem-item">
+                        <p class="inter__base inter__extrabold rotulo__internet">Linguagens</p>
+                        <div class="rotulo__dado-2">
+                            <p class="inter__base inter__extrabold valor" id="media_linguagens">...</p>
+                        </div>
+                    </div>
+
+                    <div class="enem-item">
+                        <p class="inter__base inter__extrabold rotulo__internet">Matemática</p>
+                        <div class="rotulo__dado-2">
+                            <p class="inter__base inter__extrabold valor" id="media_matematica">...</p>
+                        </div>
+                    </div>
+
+                    <div class="enem-item">
+                        <p class="inter__base inter__extrabold rotulo__internet">Redação</p>
+                        <div class="rotulo__dado-2">
+                            <p class="inter__base inter__extrabold valor" id="media_redacao">...</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <script>
-        // Exemplo de dados para o gráfico de radar (você vai substituir esses com dados da sua API)
-        const data = {
-            labels: ["Quadra de esportes", "Laboratório de Informática", "Laboratório de ciências", "Banheiro", "Biblioteca/Sala de leitura", "Banheiro PCD", "Auditório"],
-            datasets: [{
-                label: 'Infraestrutura da Escola',
-                data: [8, 6, 7, 9, 8, 5, 7], // Substitua com os dados da sua API
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
-                borderWidth: 1
-            }]
-        };
-
-        // Configuração do Radar Chart
-        const config = {
-            type: 'radar',
-            data: data,
-            options: {
-                scales: {
-                    r: {
-                        min: 0,
-                        max: 10,
-                        ticks: {
-                            stepSize: 1
-                        }
-                    }
-                }
-            }
-        };
-
-        // Criação do gráfico de radar
-        const radarChart = new Chart(
-            document.getElementById('radarChart'),
-            config
-        );
-    </script>
-
-    <script>
-        Highcharts.mapChart('container', {
-            chart: {
-                map: 'countries/br/br-all', // Mapa do Brasil completo
-                backgroundColor: '#B5D291', // Cor de fundo personalizada (verde claro)
-            },
-
-            title: {
-                text: null // Remover título
-            },
-
-            tooltip: {
-                headerFormat: '',
-                pointFormat: '<b>{point.name}</b><br>IBGE: {point.ibgeId}' // Exibe o nome do estado e o ID do IBGE
-            },
-
-            mapNavigation: {
-                enabled: true,
-                buttonOptions: {
-                    verticalAlign: 'bottom'
-                }
-            },
-
-            series: [{
-                data: [
-                    { "hc-key": "br-ac", value: 5.8, ibgeId: 12 },
-                    { "hc-key": "br-al", value: 4.9, ibgeId: 27 },
-                    { "hc-key": "br-am", value: 5.4, ibgeId: 13 },
-                    { "hc-key": "br-ap", value: 6.2, ibgeId: 16 },
-                    { "hc-key": "br-ba", value: 5.7, ibgeId: 29 },
-                    { "hc-key": "br-ce", value: 5.1, ibgeId: 23 },
-                    { "hc-key": "br-df", value: 6.5, ibgeId: 53 },
-                    { "hc-key": "br-es", value: 5.6, ibgeId: 32 },
-                    { "hc-key": "br-go", value: 5.3, ibgeId: 52 },
-                    { "hc-key": "br-ma", value: 4.8, ibgeId: 21 },
-                    { "hc-key": "br-mt", value: 5.2, ibgeId: 51 },
-                    { "hc-key": "br-ms", value: 5.0, ibgeId: 50 },
-                    { "hc-key": "br-mg", value: 6.1, ibgeId: 31 },
-                    { "hc-key": "br-pa", value: 5.0, ibgeId: 15 },
-                    { "hc-key": "br-pb", value: 5.4, ibgeId: 25 },
-                    { "hc-key": "br-pr", value: 6.0, ibgeId: 41 },
-                    { "hc-key": "br-pe", value: 5.2, ibgeId: 26 },
-                    { "hc-key": "br-pi", value: 5.0, ibgeId: 22 },
-                    { "hc-key": "br-rj", value: 6.3, ibgeId: 33 },
-                    { "hc-key": "br-rn", value: 5.5, ibgeId: 24 },
-                    { "hc-key": "br-ro", value: 5.3, ibgeId: 11 },
-                    { "hc-key": "br-rr", value: 5.4, ibgeId: 14 },
-                    { "hc-key": "br-rs", value: 6.2, ibgeId: 43 },
-                    { "hc-key": "br-sc", value: 6.4, ibgeId: 42 },
-                    { "hc-key": "br-se", value: 5.6, ibgeId: 28 },
-                    { "hc-key": "br-sp", value: 6.8, ibgeId: 35 },
-                    { "hc-key": "br-to", value: 5.1, ibgeId: 17 }
-                ], // Dados fictícios com IBGE real
-                mapData: Highcharts.maps['countries/br/br-all'], // Usando o mapa carregado
-                joinBy: 'hc-key', // Associando os dados pela chave
-                name: 'Estados do Brasil',
-                states: {
-                    hover: {
-                        color: '#a4edba'
-                    }
-                },
-
-                // Captura o evento de clique em um estado
-                point: {
-                    events: {
-                        mouseOver: function() {
-                            // Aplica uma cor ao passar o mouse sobre o estado
-                            this.graphic.attr({
-                                fill: '#a4edba' // Alteração de cor no hover
-                            });
-                        },
-                        click: function () {
-                            // Captura o ID do IBGE após o clique
-                            let ibgeId = this.ibgeId; // Acessando diretamente o ID do IBGE
-                            console.log('ID do IBGE do estado selecionado:', ibgeId);
-
-                            // Exibe um alerta com o ID do IBGE do estado
-                            alert('Você clicou no estado com o ID do IBGE: ' + ibgeId);
-                        }
-                    }
-                }
-            }]
-        });
-    </script>
 </body>
 </html>

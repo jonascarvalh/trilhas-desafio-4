@@ -1,53 +1,157 @@
 @import url('../base.css');
 
+/* Layout base */
 .sessao__dashboard {
     background-color: var(--cor-terciaria);
-    padding: 1% 5%;
+    min-height: 100vh;
+    width: 100%;
+    padding: 2rem;
     box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
 }
 
 .dashboard__titulo {
     color: var(--cor-secundaria);
     font-size: 2.5rem;
     padding-bottom: 20px;
+    text-align: center;
+}
+
+.cards__dashboard {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex: 1;
+    flex-wrap: wrap;
+    align-items: center;
+    height: auto;
 }
 
 .container__mapa {
     background-color: var(--cor-primaria);
-    width: 800px;
-    height: 600px;
+    width: 600px;
     border-radius: 30px;
-    padding: 1.5rem;
-}
-
-.anexo__mapa {
-    width: 500px;
-    overflow: hidden;
-}
-
-.anexo__mapa .container {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+    padding: 2rem;
+    flex: 1;
+    min-width: 300px;
+    max-width: 800px;
 }
 
 .dashboard__subtitulo {
     color: var(--cor-secundaria);
-    font-size: 2.2rem;
-    width: 60%;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+    text-align: center;
 }
 
 .dashboard__dados-mapa {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
 }
 
-.dashboard__container{
-  padding-right: 6rem;
+.anexo__mapa {
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
 }
 
-.rotulo__dado {
+.indicadores {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.indicador {
+    background-color: var(--cor-quinaria);
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.indicador-label {
     color: var(--cor-secundaria);
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.indicador-valor {
+    color: var(--cor-secundaria);
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+/* Estilos do card do ENEM */
+.container__enem {
+    background-color: var(--cor-quinaria);
+    width: 350px;
+    padding: 2rem;
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    flex: 1;
+    min-width: 300px;
+    max-width: 400px;
+}
+
+.titulo__internet {
+    color: var(--cor-secundaria);
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.container__enem__dados {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.enem-item {
+    text-align: center;
+}
+
+.rotulo__internet {
+    color: var(--cor-secundaria);
+    font-size: 1.2rem;
+    margin-bottom: 0.8rem;
+}
+
+.rotulo__dado-2 {
+    background-color: var(--cor-primaria);
+    border-radius: 15px;
+    padding: 1rem;
+    width: 180px;
+    margin: 0 auto;
+}
+
+.valor {
+    color: var(--cor-secundaria);
+    font-size: 2rem;
+}
+
+/* Utilitários */
+.flex {
+    display: flex;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.gap-1 {
+    gap: 1rem;
+}
+
+.gap-2 {
+    gap: 2rem;
 }
 
 .container__valor {
@@ -69,69 +173,9 @@
     background-color: var(--cor-primaria);
 }
 
-.flex {
-    display: flex;
-}
-
-.gap-1 {
-    gap: 1.5rem;
-}
-
-.gap-4 {
-    gap: 4.37rem;
-}
-
-.column {
-    flex-direction: column;
-}
-
-.align-center {
-    align-items: center;
-}
-
-.valor {
-    color: var(--cor-secundaria);
-    font-size: 2.5rem;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.container__internet {
-    background-color: var(--cor-quinaria);
-    width: 800px;
-    padding: 1.5rem;
-}
-
-.container__internet__dados{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .container__borda--preta {
     border: 1px solid black;
     border-radius: 30px;
-}
-
-.titulo__internet {
-    color: var(--cor-secundaria);
-    font-size: 2.2rem;
-    margin-bottom: 1.875rem;
-}
-
-.rotulo__dado-2 {
-    background-color: var(--cor-primaria);
-    border-radius: 30px;
-    padding: 1.25rem;
-}
-
-.rotulo__internet {
-    text-align: center;
-    color: var(--cor-secundaria);
-    margin-bottom: 15px;
-    font-size: 1.5rem;
 }
 
 .titulo__nacionais {
@@ -159,7 +203,6 @@
     background-color: var(--cor-quinaria);
 }
 
-
 .dados__nacionais {
     justify-content: space-between;
 }
@@ -176,11 +219,6 @@
     font-size: 2.2rem;
 }
 
-.cards__dashboard {
-    display: flex;
-    gap: 10%;
-}
-
 .radar__tamanho {
     width: 100% !important;
     height: 100% !important;
@@ -190,4 +228,121 @@
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+
+
+.titulo__enem {
+    font-size: 1.875rem;
+}
+
+/* Media Queries */
+@media (max-width: 1024px) {
+    .sessao__dashboard {
+        padding: 1rem;
+    }
+
+    .cards__dashboard {
+        gap: 1rem;
+    }
+
+    .container__mapa,
+    .container__enem {
+        width: 80%;
+    }
+
+    .dashboard__titulo {
+        font-size: 2rem;
+    }
+
+    .dashboard__subtitulo {
+        font-size: 1.5rem;
+    }
+
+    .anexo__mapa {
+        height: 75%;
+    }
+
+    .cards__dashboard {
+        flex-direction: column;
+    }
+}
+
+@media (max-width: 768px) {
+    .sessao__dashboard {
+        width: auto;
+        padding: 0;
+    }
+    .cards__dashboard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .dashboard__titulo {
+        font-size: 1.8rem;
+    }
+
+    .dashboard__subtitulo {
+        font-size: 1.3rem;
+    }
+
+    .indicadores {
+        gap: 1rem;
+    }
+
+    .indicador {
+        padding: 0.8rem 1.5rem;
+        min-width: 100px;
+    }
+
+    .valor {
+        font-size: 1.5rem;
+    }
+
+    .anexo__mapa {
+        height: 75%;
+        margin-bottom: 1rem;
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .sessao__dashboard {
+        padding: 0.5rem;
+    }
+
+    .dashboard__titulo {
+        font-size: 1.5rem;
+    }
+
+    .dashboard__subtitulo {
+        font-size: 1.1rem;
+    }
+
+    .container__mapa,
+    .container__enem {
+        padding: 1rem;
+    }
+
+    .indicador {
+        flex: 1;
+        min-width: 80px;
+        padding: 0.5rem 1rem;
+    }
+
+    .indicador-valor {
+        font-size: 1.5rem;
+    }
+
+    .indicador-label {
+        font-size: 0.9rem;
+    }
+
+    .rotulo__internet {
+        font-size: 1rem;
+    }
+
+    .rotulo__dado-2 {
+        width: 150px;
+        padding: 0.8rem;
+    }
 }

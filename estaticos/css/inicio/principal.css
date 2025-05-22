@@ -20,6 +20,9 @@
     color: var(--cor-terciaria);
     font-size: 1.875rem;
     border-radius: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .conteudo__titulo{
@@ -109,7 +112,7 @@
     .conteudo__botao {
         align-self: center;
         font-size: 1.5rem;
-        height: 60px;
+        height: 80px;
         margin-bottom: 1rem;
         width: 90%;
     }

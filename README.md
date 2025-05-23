@@ -30,9 +30,9 @@ A estrutura do repositório está organizada da seguinte forma:
 │   ├── imagens/
 │       ├── inicio/
 │       └── dashboard/
-│   ├── scripts/
-│       ├── inicio/
-│       └── dashboard/
+├── scripts/
+│   ├── inicio/
+│   └── dashboard/
 ├── .gitignore 
 ├── README.md
 ```

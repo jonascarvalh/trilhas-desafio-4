@@ -65,9 +65,10 @@
 }
 
 .conteudo__dashboard__imagem{
-    width: 80%;
-    height: 80%;
-    border-radius: 5%;
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+    object-fit: cover;
 }
 
 .conteudo__titulo{
